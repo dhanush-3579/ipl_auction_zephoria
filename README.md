@@ -1,0 +1,182 @@
+# 🏏 IPL Analytics Pro
+
+A full **Streamlit IPL analytics dashboard** using real match and player data.
+
+---
+
+## ⚙️ Setup
+
+### 📁 Project Structure
+```bash
+ipl_pro/
+├── app.py
+├── requirements.txt
+├── IPL_Stat_2008_2025.json
+└── player_team_season_mapping_info_and_images.json
+```
+
+### ▶️ Run the App
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+---
+
+## 🗂️ JSON Structure Expected
+
+### 📊 `IPL_Stat_2008_2025.json`
+```json
+{
+  "SK Raina": {
+    "op_team": {
+      "Punjab Kings": {
+        "Bt_Runs": 830,
+        "Bt_Balls": 573,
+        "Bt_Avg": 46.11,
+        "Bt_Strike_rate": 144.85,
+        "Matches": 24,
+        "Bw_Runs": 122,
+        "Bw_Balls": 103,
+        "Bw_economy": 7.11,
+        "Gain_Wicket": 3,
+        "Lose_Wicket": 18,
+        "Bt_Runs_list": [32, 26],
+        "Six_list": [],
+        "four_list": [],
+        "year": ["2008"]
+      }
+    },
+    "op_Bowler": {},
+    "op_Batter": {},
+    "Last_recent_matches": {
+      "Bt_Avg": 35.49,
+      "Bt_Strike_rate": 132.54,
+      "Bw_economy": 7.07,
+      "Bw_Avg_Wickets": 0.12
+    }
+  }
+}
+```
+
+---
+
+### 👥 `player_team_season_mapping_info_and_images.json`
+```json
+{
+  "Chennai Super Kings": {
+    "2024": {
+      "Players_Detail": {
+        "MS Dhoni": {
+          "role": "WK-Batter",
+          "img": "path/or/url/to/image.png"
+        },
+        "Ravindra Jadeja": {
+          "role": "All-Rounder",
+          "img": "..."
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+### ✅ Supported Roles
+- WK-Batter  
+- Batter  
+- All-Rounder  
+- Bowler  
+
+---
+
+## ✨ Features
+
+### 🏟️ Squad & H2H Overview
+- Side-by-side squad tables with H2H stats  
+- Role distribution stacked bar chart  
+- Team aggregate metrics  
+
+---
+
+### 👤 Player Deep Dive
+- Career summary (runs, SR, avg, wickets, economy)
+
+#### 📌 Tabs:
+- **vs Team** → H2H stats + charts  
+- **vs Bowlers** → runs, dismissals, strike rate  
+- **vs Batters** → runs conceded, wickets  
+- **Form** → recent performance trends  
+
+---
+
+### ⭐ Dream11 Predictor
+Smart scoring formula:
+
+```
+Score = (H2H Avg × 1.2) 
+      + H2H Bowling 
+      + Recent Batting 
+      + Recent Bowling 
+      + Role Bonus
+```
+
+- Team rules:
+  - 1 WK
+  - 4 BAT
+  - 3 AR
+  - 3 BOWL
+  - Max 7 players per team
+
+- Captain = highest score  
+- Vice Captain = second highest  
+
+---
+
+### 🔮 Match Scorecard Prediction
+
+Weight formula:
+```
+w_H2H = min(h2h_matches / 15, 0.7)
+```
+
+#### Features:
+- Player-wise predicted stats  
+- Top 5 batting performers  
+- Runs & wickets charts  
+- Team comparison  
+
+---
+
+### 📈 Match Summary
+- Predicted team totals  
+- Winner prediction with confidence  
+- Top 6 key players  
+- Team strength radar:
+  - Runs
+  - Strike Rate
+  - Wickets
+  - Top Score
+  - Depth  
+
+---
+
+## 🚀 Tech Stack
+- Streamlit  
+- Python  
+- Pandas  
+- Matplotlib / Plotly  
+
+---
+
+## 📌 Project Highlights
+✔ Real IPL dataset  
+✔ AI-based prediction logic  
+✔ Interactive dashboard  
+✔ Dream11 team generator  
+
+---
+
+## 👨‍💻 Author
+**Sunny Yadav**
