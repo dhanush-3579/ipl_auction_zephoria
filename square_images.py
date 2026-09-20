@@ -1,34 +1,39 @@
 from PIL import Image
 import os
 
-input_folder = "ipl_player_images"
-output_folder = "ipl_player_images_square"
+input_folder = "ipl_player_images_original"
+output_folder = "ipl_player_images_final"
 
 os.makedirs(output_folder, exist_ok=True)
 
 for filename in os.listdir(input_folder):
+    if not filename.lower().endswith((".png", ".jpg", ".jpeg")):
+        continue
 
     input_path = os.path.join(input_folder, filename)
-    output_path = os.path.join(output_folder, filename)
+    output_path = os.path.join(
+        output_folder,
+        os.path.splitext(filename)[0] + ".png"
+    )
 
-    try:
-        img = Image.open(input_path).convert("RGB")
+    img = Image.open(input_path).convert("RGBA")
 
-        width, height = img.size
-        size = max(width, height)
+    width, height = img.size
+    size = max(width, height)
 
-        square = Image.new("RGB", (size, size), "white")
+    # White 1:1 canvas
+    canvas = Image.new("RGBA", (size, size), (255, 255, 255, 255))
 
-        x = (size - width) // 2
-        y = (size - height) // 2
+    # Keep player proportions unchanged
+    x = (size - width) // 2
+    y = (size - height) // 2
 
-        square.paste(img, (x, y))
+    canvas.alpha_composite(img, (x, y))
 
-        square.save(output_path, quality=95)
+    canvas.convert("RGB").save(
+        output_path,
+        "PNG",
+        optimize=True
+    )
 
-        print(f"Processed: {filename}")
-
-    except Exception as e:
-        print(f"Error processing {filename}: {e}")
-
-print("\nAll images converted to 1:1 ratio successfully!")
+print("All images converted to white-background 1:1 format!")
