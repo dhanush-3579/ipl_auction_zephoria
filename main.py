@@ -204,17 +204,17 @@ def get_player_image(player):
                 with open(path, "rb") as img_file:
                     return base64.b64encode(img_file.read()).decode()
             except Exception as e:
-                default_path = r'ipl_player_images\Aakash Chopra.png'
+                default_path = r'ipl_player_images\Aakash Chopra.webp'
                 with open(default_path, "rb") as img_file:
                     return base64.b64encode(img_file.read()).decode()
 
-    img_path = os.path.join("ipl_player_images", f"{player}.png")
+    img_path = os.path.join("ipl_player_images", f"{player}.webp")
     return get_base64_image(img_path)
 stat_data  = load_stat_data()
 squad_data = load_squad_data()
 playerNames = load_player_names()
 PN_L_to_S = {playerNames[i]:i for i in playerNames}
-default_image = r'C:\\Users\\WELCOME\\Desktop\\Cricket_\\PlayerPerformancePrediction_Main_folder\\ipl_player_images\\ipl_player_images\\Anshul Kamboj.png'
+default_image = r'C:\\Users\\WELCOME\\Desktop\\Cricket_\\PlayerPerformancePrediction_Main_folder\\ipl_player_images\\ipl_player_images\\Anshul Kamboj.webp'
 
 
 # ─── Data-missing guard ──────────────────────────────────────────────────────
@@ -1814,3 +1814,4 @@ st.markdown("""
     &nbsp;·&nbsp; Predictions are statistical estimates, not guarantees
 </div>
 """, unsafe_allow_html=True)
+
